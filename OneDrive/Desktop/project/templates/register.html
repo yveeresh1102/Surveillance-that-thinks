@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+  <title>Register</title>
+</head>
+
+<body>
+
+  <div class="top-heading">SERVALLIANCE THAT THINK</div>
+
+  <form class="form" autocomplete="off">
+    <h1>Create Account</h1>
+
+    <div class="control block-cube block-input">
+      <input id="reg_user" type="text" placeholder="Username">
+    </div>
+
+    <div class="control block-cube block-input">
+      <input id="reg_pass" type="password" placeholder="Password">
+    </div>
+
+    <button class="btn block-cube block-cube-hover" id="registerBtn" type="button">
+      <div class="text">Register</div>
+    </button>
+
+    <button class="btn block-cube block-cube-hover" id="loginRedirect" type="button">
+      <div class="text">Already have an account? Login</div>
+    </button>
+
+  </form>
+
+<script>
+// ---------------------- REGISTER FUNCTION -----------------------
+document.getElementById("registerBtn").addEventListener("click", async () => {
+    let username = document.getElementById("reg_user").value.trim();
+    let password = document.getElementById("reg_pass").value.trim();
+
+    if (!username || !password) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    let response = await fetch("/register_user", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({username, password})
+    });
+
+    let result = await response.json();
+
+    if (result.status === "success") {
+        alert("Registration successful. Please login.");
+        window.location.href = "/";
+    }
+    else if (result.status === "exists") {
+        alert("Username already exists!");
+    }
+});
+
+// ---------------------- LOGIN REDIRECT -----------------------
+document.getElementById("loginRedirect").addEventListener("click", () => {
+    window.location.href = "/";
+});
+</script>
+
+</body>
+</html>

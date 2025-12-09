@@ -1,0 +1,108 @@
+/* Background */
+body {
+  background: #202020;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Top Heading */
+.top-heading {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: rgba(255, 255, 255, 0.10);
+  padding: 10px 20px;
+  border-radius: 10px 0 10px 0;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+
+  animation: slideDown 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 0 4px cyan);
+}
+
+/* Form */
+.form {
+  width: 360px;
+  margin: 150px auto;
+  text-align: center;
+  color: #fff;
+}
+
+.form h1 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.block-input input {
+  position: relative;
+  background: #111;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  color: #ccc;
+  font-size: 15px;
+  outline: none;
+}
+
+.control {
+  margin-bottom: 20px;
+}
+
+/* 3D Cube Structure */
+.block-cube {
+  position: relative;
+}
+
+.block-cube .bg,
+.block-cube .bg-top,
+.block-cube .bg-right {
+  position: absolute;
+  background: transparent;
+  border: 2px solid #555;
+}
+
+/* Button */
+.btn {
+  margin-top: 12px;
+  width: 100%;
+  height: 60px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btn .text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover Neon */
+.block-cube-hover:hover {
+  box-shadow: 0 0 12px cyan, 0 0 24px rgba(0, 255, 255, 0.7);
+  transition: 0.3s ease-in-out;
+}

@@ -1,0 +1,81 @@
+body {
+  background: #111;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+/* Top Right Heading */
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.brand-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 25px;
+  border-radius: 15px;
+  border: 1px solid cyan;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Dashboard Title */
+.dash-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 36px;
+}
+
+/* Camera Grid */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.camera-card {
+  background: rgba(255,255,255,0.06);
+  padding: 40px;
+  text-align: center;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid cyan;
+  transition: .3s;
+}
+
+.camera-card:hover {
+  background: cyan;
+  color: black;
+  transform: translateY(-5px);
+}
+.logout-box {
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 10px 20px;
+    background: #ff4444;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-box:hover {
+    background: #cc0000;
+}

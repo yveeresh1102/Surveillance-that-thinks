@@ -1,0 +1,163 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #020617);
+  min-height: 100vh;
+  color: #f8fafc;
+}
+
+/* HEADER SECTION */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  opacity: 0.8;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* CARD GRID */
+.pricing-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 25px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* CARD */
+.card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 30px 22px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px rgba(0,0,0,0.55);
+}
+
+/* CARD TITLE */
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* PRICE */
+.price {
+  font-size: 2.1rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #e0faff;
+}
+
+.price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* FEATURE LIST */
+.features {
+  list-style: none;
+  margin: 0 0 25px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.features li {
+  margin-bottom: 4px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 1px solid #38bdf8;
+  background: transparent;
+  cursor: pointer;
+  color: #e1f4ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+/* PRIMARY BUTTON (Pro Plan) */
+.btn-primary {
+  background: #38bdf8;
+  color: #0f172a;
+}
+
+.btn-primary:hover {
+  background: #0ea5e9;
+}
+
+/* BADGE */
+.card-highlight {
+  border: 2px solid #38bdf8;
+  transform: translateY(-4px);
+}
+
+.card-highlight:hover {
+  transform: translateY(-8px);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f97316;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #0f172a;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 30px 10px 45px;
+  opacity: 0.8;
+}
+
+.footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

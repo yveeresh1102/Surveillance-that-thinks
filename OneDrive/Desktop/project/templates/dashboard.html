@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+
+<body>
+
+<!-- Top Brand Bar (ONLY ONE NOW) -->
+<div class="top-bar">
+    <div class="brand-box">
+      <img src="{{ url_for('static', filename='logo.png') }}" class="logo-icon">
+      SERVALLIANCE THAT THINK
+    </div>
+
+    <!-- LOGOUT BUTTON -->
+    <div class="logout-box" onclick="logout()">
+        Logout
+    </div>
+</div>
+
+<h1 class="dash-title">CCTV Monitoring Dashboard</h1>
+
+<!-- Camera Grid -->
+<div class="camera-grid">
+    <div class="camera-card" onclick="openCam(0)">Camera 0</div>
+    <div class="camera-card" onclick="openCam(1)">Camera 1</div>
+    <div class="camera-card" onclick="openCam(2)">Camera 2</div>
+    <div class="camera-card" onclick="openRTSP()">Add IP Stream</div>
+</div>
+
+<!-- Demo Button -->
+<div class="camera-card" style="margin: 40px auto; width: 300px;" 
+     onclick="window.location.href='/demo_output'">
+    See Demo Output
+</div>
+
+<!-- Alert Box -->
+<div id="alert-box"
+     style="display:none;background:red;color:white;padding:10px;margin:20px;
+     font-weight:bold;border-radius:5px;">
+</div>
+
+<script>
+    // Subscription check
+    {% if url_for('subscription', _external=False) %}
+      if (localStorage.getItem("subscribed") !== "true") {
+        alert("Please subscribe to access dashboard.");
+        window.location.href = "{{ url_for('subscription') }}";
+      }
+    {% endif %}
+
+    function openCam(id) {
+        window.location.href = "/live_camera?camera=" + id;
+    }
+
+    function openRTSP() {
+        const url = prompt("Enter RTSP / IP Camera URL:");
+        if (url && url.trim() !== "") {
+            window.location.href = "/live_camera?camera=" + encodeURIComponent(url);
+        }
+    }
+
+    // SSE Alert Listener
+    const evtSource = new EventSource("/alerts");
+
+    evtSource.onmessage = (event) => {
+        let data = JSON.parse(event.data);
+
+        let box = document.getElementById("alert-box");
+        box.style.display = "block";
+        box.innerHTML = `
+            ⚠ <b>THREAT DETECTED!</b><br>
+            <b>Camera:</b> ${data.camera}<br>
+            <b>Type:</b> ${data.threat_type}<br>
+            <b>Confidence:</b> ${data.confidence}%<br>
+            <b>Clip Saved:</b> ${data.clip}
+        `;
+    };
+
+    // Logout
+    function logout() {
+        localStorage.removeItem("logged_in");
+        localStorage.removeItem("subscribed");
+        window.location.href = "/";
+    }
+</script>
+
+</body>
+</html>

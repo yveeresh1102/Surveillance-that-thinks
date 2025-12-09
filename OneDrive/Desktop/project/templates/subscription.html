@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Plans</title>
+
+  <!-- Correct Flask static loading -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='subscription.css') }}">
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>Choose Your Plan</h1>
+    <p>Select the subscription that suits you best.</p>
+  </header>
+
+  <main class="pricing-container">
+
+    <!-- Basic Plan -->
+    <section class="card">
+      <h2>Basic</h2>
+      <p class="price">₹199<span>/week</span></p>
+      <ul class="features">
+        <li>✔ 1 Week</li>
+        <li>✔ 10 videos only</li>
+        <li>✔ Limited Features</li>
+      </ul>
+      <button class="btn" onclick="choosePlan('basic')">Choose Basic</button>
+    </section>
+
+    <!-- Popular Plan -->
+    <section class="card card-highlight">
+      <div class="badge">Most Popular</div>
+      <h2>Pro</h2>
+      <p class="price">₹499<span>/month</span></p>
+      <ul class="features">
+        <li>✔ 1 Month</li>
+        <li>✔ Unlimited Videos</li>
+        <li>✔ Advanced Features</li>
+      </ul>
+      <button class="btn btn-primary" onclick="choosePlan('pro')">Choose Pro</button>
+    </section>
+
+    <!-- Premium Plan -->
+    <section class="card">
+      <h2>Premium</h2>
+      <p class="price">₹2499<span>/year</span></p>
+      <ul class="features">
+        <li>✔ 1 Year</li>
+        <li>✔ Unlimited Videos</li>
+        <li>✔ Live Camera Observation</li>
+        <li>✔ 24/7 Support</li>
+        <li>✔ All Features Unlocked</li>
+      </ul>
+      <button class="btn" onclick="choosePlan('premium')">Choose Premium</button>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <a href="{{ url_for('index') }}">Back to Login</a>
+  </footer>
+
+  <script>
+    function choosePlan(planName) {
+      // Save subscription locally
+      localStorage.setItem("subscribed", "true");
+      localStorage.setItem("plan", planName);
+
+      alert("You have successfully subscribed to: " + planName.toUpperCase());
+
+      // Redirect to dashboard
+      window.location.href = "{{ url_for('dashboard') }}";
+    }
+  </script>
+
+</body>
+</html>

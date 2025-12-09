@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Threat Detection Demo</title>
+    <style>
+        body {
+            text-align: center;
+            background: #111;
+            color: white;
+            font-family: Arial;
+        }
+        video {
+            width: 80%;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 3px solid #00ccff;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Threat Detection – Model Output Demo</h1>
+<p>This video demonstrates how the system detects weapons in real time.</p>
+
+<video controls autoplay>
+    <source src="{{ url_for('static', filename='videos/demo.mp4') }}" type="video/mp4">
+    Your browser does not support video playback.
+</video>
+
+<br><br>
+<button onclick="window.location.href='/dashboard'"
+        style="padding:10px 20px; background:#00ccff; color:black; border:none; border-radius:5px;">
+    Back to Dashboard
+</button>
+
+</body>
+</html>

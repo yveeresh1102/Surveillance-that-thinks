@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Login</title>
+</head>
+
+<body>
+
+  <div class="top-heading">SERVALLIANCE THAT THINK</div>
+
+  <form class="form" autocomplete="off">
+    <h1>Sign In</h1>
+
+    <div class="control block-cube block-input">
+      <input id="uname" type="text" placeholder="Username">
+    </div>
+
+    <div class="control block-cube block-input">
+      <input id="pwd" type="password" placeholder="Password">
+    </div>
+
+    <button class="btn block-cube block-cube-hover" id="loginBtn" type="button">
+      <div class="text">Log In</div>
+    </button>
+
+    <button class="btn block-cube block-cube-hover" id="registerBtn" type="button">
+      <div class="text">Create New Account</div>
+    </button>
+
+  </form>
+
+<script>
+// ---------------------- LOGIN FUNCTION -----------------------
+document.getElementById("loginBtn").addEventListener("click", async () => {
+    let username = document.getElementById("uname").value.trim();
+    let password = document.getElementById("pwd").value.trim();
+
+    if (!username || !password) {
+        alert("Please enter both username & password.");
+        return;
+    }
+
+    let response = await fetch("/login_user", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({username, password})
+    });
+
+    let result = await response.json();
+
+    if (result.status === "success") {
+        localStorage.setItem("logged_in", "true");
+        window.location.href = "/dashboard";
+    } else {
+        alert("Invalid username or password!");
+    }
+});
+
+// ---------------------- GO TO REGISTER PAGE -----------------------
+document.getElementById("registerBtn").addEventListener("click", () => {
+    window.location.href = "/register";
+});
+</script>
+
+</body>
+</html>
