@@ -16,3 +16,6 @@ __pycache__/
 
 # Ignore cache
 *.cache/
+clips/
+static/clips/
+*.mp4
